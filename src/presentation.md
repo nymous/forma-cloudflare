@@ -9,6 +9,8 @@ class: center, middle, inverse
 
 .cloudbleed-img[![Cloudbleed](./assets/img/cloudbleed.png)]
 
+#### https://tikiki.github.io/forma-cloudflare
+
 ---
 
 ## Mais qu'est-ce que c'est quoi dis-donc
@@ -204,7 +206,7 @@ Pour la plupart de leurs services, Cloudflare doit parser la page
   goto _test_eof;
 ```
 
-➡ Le pointeur `p` peut sauter après la fin du fichier !
+➡ Le pointeur `p` peut sauter après la fin du fichier ! ➡ buffer overrun
 
 Ça arrive si une page finit avec un tag cassé (e.g. `<script type=`) ➡ 0.06% des sites
 
@@ -225,9 +227,66 @@ Mise en place des fonctionnalités buggées :
 ## Conséquences
 ]
 
+.right-column[
+- Accès à des zones mémoires non prévues
 
+- Injection dans les pages web de données provenant de la RAM des serveurs Cloudflare
+
+.example-leak-img[![Example leak](./assets/img/example-leak.png)]
+]
+
+---
+
+.left-column[
+## Comment ?
+## Conséquences
+]
+
+.right-column[
+- Possible que des mots de passe destinés à Discord se soient retrouvés sur les pages de AshleyMadison
+
+- Idem pour des clés d'API, des tokens d'identification, des cookies d'authentification, des messages d'un chat...
+
+- Les clés SSH/SSL des clients n'ont **pas** fuité (elles étaient dans la RAM d'un autre processus)
+
+- Autre problème : Google a un cache des pages qu'il indexe ➡ même une fois corrigé, le bug est toujours exploitable
+]
+---
+
+.left-column[
+## Comment ?
+## Conséquences
+## Victimes
+]
+
+.right-column[
+Potentiellement tous les utilisateurs de sites utilisant Cloudflare
+
+Quelques exemples :
+
+- Coinbase
+- Patron
+- Hacker News
+- Medium
+- 4chan
+- Yelp
+- Uber
+- Discord
+- Curse
+- NY Times
+- Pastebin
+- Feedly
+- ...
+]
 ---
 
 Pourquoi c'était aussi widespread ?
 Pourquoi ils ont accès à ces données ?
 Les mots de passe hashés ?
+
+---
+template: inverse
+
+# The end
+
+### https://tikiki.github.io/forma-cloudflare

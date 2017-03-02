@@ -8,9 +8,9 @@ var download = require('gulp-download-stream');
 const paths = {
   htmlSrc: 'src/index.html',
   mdSrc: 'src/presentation.md',
-  assetsDir: 'assets',
-  jsDir: 'assets/js',
-  imgDir: 'assets/img',
+  assetsDir: 'src/assets',
+  jsDir: 'src/assets/js',
+  imgDir: 'src/assets/img',
   distDir: 'dist',
 }
 

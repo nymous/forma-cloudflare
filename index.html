@@ -153,9 +153,9 @@ class: center, middle, inverse
 layout: false
 
 .left-column[
-  ## CloudFlare
+## CloudFlare
 
-  .cloudflare-logo-img[![Cloudflare logo](./assets/img/cloudflare.jpg)]
+.cloudflare-logo-img[![Cloudflare logo](./assets/img/cloudflare.jpg)]
 ]
 
 .right-column[
@@ -171,6 +171,10 @@ layout: false
 
   - Optimisation de sites Web (cache, minification et concaténation de JS, GZIP...)
 
+  - Protection des adresses mail
+
+  - Réécriture des liens en HTTPS
+
   - Protection DDoS
   
   - Chiffrement SSL
@@ -179,13 +183,41 @@ layout: false
 ---
 template: inverse
 
+# Comment ça marche ?
+
+---
+
+.left-column[
+## Comment ça marche ?
+]
+.right-column[
+Cloudflare est *entre* votre site et les visiteurs
+
+![How Cloudflare works](./assets/img/cloudflare-how-it-works.png)
+
+Navigateur : `nymous.io` ➡ Serveur Cloudflare ➡ Serveur de `nymous.io`
+
+➡ Modification du contenu sur leurs serveurs
+]
+
+---
+template: inverse
+
 # Les faits
+## *Que faisiez-vous le vendredi à 17h54 M. Smith ?*
 
 ---
 layout: false
 
 .left-column[
-  ## Les faits
+## Timelapse
+]
+
+---
+
+.left-column[
+## Timelapse
+### Découverte du problème
 ]
 
 .right-column[
@@ -197,7 +229,8 @@ layout: false
 ---
 
 .left-column[
-  ## Les faits
+## Timelapse
+### Découverte du problème
 ]
 
 .right-column[
@@ -209,8 +242,22 @@ layout: false
 - 18/02/2017 0:32 : Cloudflare reçoit plus d'infos de la part de Google
 ]
 
---
+---
 
+.left-column[
+## Timelapse
+### Découverte du problème
+### Recherche de l'origine
+]
+
+.right-column[
+
+- 18/02/2017 0:11 : Tavis Ormandy (chercheur en sécurité chez Google) envoie un tweet à CloudFlare
+]
+
+.right-column-no-padding[
+- 18/02/2017 0:32 : Cloudflare reçoit plus d'infos de la part de Google
+]
 .right-column-no-padding[
 - 18/02/2017 0:40 : Une équipe s'assemble à San Francisco pour rechercher d'où vient le bug
 ]
@@ -235,11 +282,14 @@ layout: false
 
 ---
 .left-column[
-## Les faits
+## Timelapse
+### Découverte du problème
+### Recherche de l'origine
+### Déploiement du fix
 ]
 
 .right-column[
-- 18/02/2017 7:22 : Cloudflare découvre la vraie origine du problème (le cf-parser) ; désactivation mondiale
+- 18/02/2017 7:22 : Cloudflare découvre la vraie origine du problème (le cf-parser) ; rédaction d'un patch pour le désactiver mondialement
 ]
 
 --
@@ -254,8 +304,61 @@ layout: false
 - 21/02/2017 18:03 : Tous les services qui avaient été désactivés sont relancés
 ]
 
+--
+
+.right-column[]
+.right-column[]
+.right-column[]
+.right-column[]
+.right-column[]
+
+.right-column[
+- Réaction et fix rapide de Cloudflare, déployé sur toute leur infrastructure instantanément
+
+- Travail en collaboration avec les moteurs de recherche (Google, Bing, DuckDuckGo) pour retirer des caches les résultats dangereux
+]
+---
+template: inverse
+
+# D'où venait le problème ?
+
 ---
 
+.left-column[
+## Comment ?
+]
+
+.right-column[
+Pour la plupart de leurs services, Cloudflare doit parser la page
+
+➡ Développement de leur propre parseur avec Ragel
+
+```c
+/* generated code */
+*if ( ++p == pe )
+  goto _test_eof;
+```
+
+➡ Le pointeur `p` peut sauter après la fin du fichier !
+
+Ça arrive si une page finit avec un tag cassé (e.g. `<script type=`) ➡ 0.06% des sites
+
+Mise en place des fonctionnalités buggées :
+
+  - 22/09/2016 : Réécriture HTTP -> HTTPS
+  - 30/01/2017 : Server-side excludes
+  - 13/02/2017 : Obfuscation des adresses mails
+
+
+  - 18/02/2017 : Google contacte Cloudflare, la faille est bouchée
+]
+
+---
+
+.left-column[
+## Comment ?
+## Conséquences
+]
 
 
 ---
@@ -268,7 +371,11 @@ Les mots de passe hashés ?
     <script src="./assets/js/remark.min.js" type="text/javascript">
     </script>
     <script type="text/javascript">
-      var slideshow = remark.create();
+      var slideshow = remark.create({
+        ratio: '16:9',
+        highlightLines: true,
+        highlightStyle: 'solarized-dark',
+      });
     </script>
   </body>
 </html>

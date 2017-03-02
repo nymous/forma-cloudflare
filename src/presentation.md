@@ -279,10 +279,63 @@ Quelques exemples :
 - ...
 ]
 ---
+template: inverse
 
-Pourquoi c'était aussi widespread ?
-Pourquoi ils ont accès à ces données ?
-Les mots de passe hashés ?
+# Pourquoi autant de bordel ?
+
+---
+layout: false
+
+.left-column[
+## Impact
+]
+
+.right-column[
+- Cloudflare est *très* utilisé
+  - Un nombre énorme de sites potentiellement touchés (estimation haute de 4.287.625 domaines)
+]
+
+--
+
+.right-column[
+- Comment Cloudflare a accès à tout ça ? Et le trafic chiffré avec HTTPS ?
+  - Cloudflare **doit** pouvoir déchiffrer pour appliquer sa "magie"
+  - Votre server ⬅ 🔒 ➡ Entrée de Cloudflare ⬅ 🔓 ➡ Magie de Cloudflare ⬅ 🔓 ➡ Sortie de CloudFlare ⬅ 🔒 ➡ Navigateur du client
+]
+
+--
+
+.right-column[
+- Les mots de passe ne sont pas hashés ?
+  - Les mots de passe sont effectivement hashés *dans la base de donnée*...
+  - ...*mais* ils sont transmis en clair quand l'utilisateur les tape dans son navigateur
+  - Comme Cloudflare est au milieu, il déchiffre le trafic et stocke le mot de passe en RAM
+  - Le buffer overrun affiche le mot de passe sur une autre page
+]
+
+---
+template: inverse
+
+# Le problème Cloudflare
+
+---
+layout: false
+
+.left-column[
+## Problème Cloudflare
+]
+
+.right-column[
+- MitM (Man in the Middle)
+  - Déchiffrement
+  - Espionnage
+  - Usage malicieux
+
+
+- SPoF (Single Point of Failure)
+
+- Faux sentiment de sécurité
+]
 
 ---
 template: inverse

@@ -81,6 +81,7 @@ layout: false
 ]
 
 ---
+count: false
 
 .left-column[
 ## Timelapse
@@ -94,6 +95,7 @@ layout: false
 ]
 
 ---
+count: false
 
 .left-column[
 ## Timelapse
@@ -110,6 +112,7 @@ layout: false
 ]
 
 ---
+count: false
 
 .left-column[
 ## Timelapse
@@ -130,24 +133,29 @@ layout: false
 ]
 
 --
+count: false
 
 .right-column-no-padding[
 - 18/02/2017 01:19 : Cloudflare découvre que le problème est causé par leur service d'obfuscation d'email ; désactivation mondiale
 ]
 
 --
+count: false
 
 .right-column-no-padding[
 - 18/02/2017 01:22 : Une équipe se forme à Londres, pour pouvoir travailler en continu
 ]
 
 --
+count: false
 
 .right-column-no-padding[
 - 18/02/2017 04:24 : Cloudflare découvre que le problème apparait aussi à cause de la réécriture automatique des liens en HTTPS ; désactivation mondiale
 ]
 
 ---
+count: false
+
 .left-column[
 ## Timelapse
 ### Découverte du problème
@@ -160,18 +168,21 @@ layout: false
 ]
 
 --
+count: false
 
 .right-column-no-padding[
 - 20/02/2017 21:59 : Cloudflare déploie le bugfix pour leur cf-parser
 ]
 
 --
+count: false
 
 .right-column-no-padding[
 - 21/02/2017 18:03 : Tous les services qui avaient été désactivés sont relancés
 ]
 
 --
+count: false
 
 .right-column[]
 .right-column[]
@@ -296,6 +307,7 @@ layout: false
 ]
 
 --
+count: false
 
 .right-column[
 - Comment Cloudflare a accès à tout ça ? Et le trafic chiffré avec HTTPS ?
@@ -304,6 +316,7 @@ layout: false
 ]
 
 --
+count: false
 
 .right-column[
 - Les mots de passe ne sont pas hashés ?

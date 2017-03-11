@@ -338,6 +338,34 @@ layout: false
 ]
 
 ---
+
+.left-column[
+## Sources
+]
+
+.right-column[
+- https://www.cloudflare.com/
+
+- https://en.wikipedia.org/wiki/Cloudflare
+
+- https://twitter.com/taviso/status/832744397800214528
+
+- https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug/
+
+- https://blog.cloudflare.com/quantifying-the-impact-of-cloudbleed/
+
+- https://bugs.chromium.org/p/project-zero/issues/detail?id=1139
+
+- https://blog.discordapp.com/safety-jim-psa-cloudflare-security-issue-77a4ecc48298#.qs7oescci
+
+- https://github.com/pirate/sites-using-cloudflare
+
+- https://www.nowsecure.com/blog/2017/02/23/cloudflare-cloudbleed-bugs-impact-mobile-apps/
+
+- http://cryto.net/~joepie91/blog/2016/07/14/cloudflare-we-have-a-problem/
+]
+
+---
 template: inverse
 
 # The end
